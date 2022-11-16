@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+      crossorigin="anonymous"
+    />
+    <style>
+      @media only screen and (max-width: 576) {
+        .f-card {
+          margin-left: 3em;
+          margin-right: 3em;
+          padding-top: 3em;
+          padding-bottom: 3em;
+        }
+      }
+      @media only screen and (min-width: 768px) {
+        .f-card {
+          margin-left: 5em;
+          margin-right: 5em;
+          padding-top: 3em;
+          padding-bottom: 3em;
+        }
+      }
+      @media only screen and (min-width: 992px) {
+        .f-card {
+          margin-left: 10em;
+          margin-right: 10em;
+          padding-top: 3em;
+          padding-bottom: 3em;
+        }
+      }
+
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+      h1 {
+        font-weight: bold;
+      }
+
+      h2,
+      h5,
+      p {
+        font-weight: bolder;
+      }
+
+      footer a {
+        text-decoration: none;
+        color: black;
+      }
+
+      footer img {
+        margin-right: 0.75em;
+      }
+
+      #overlay {
+        position: fixed;
+        display: none;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 2;
+      }
+
+      #cari-mobil {
+        z-index: 3;
+      }
+
+      select option:hover {
+        background: #c9e7ca !important;
+        background-color: #c9e7ca !important;
+        color: #5cb85f !important;
+      }
+
+      select option:first-child {
+        color: #ced4da;
+      }
+    </style>
+    <title>Cari Mobil</title>
+  </head>
+  <body>
+    <!-- Overlay -->
+    <div id="overlay" onclick="off()"></div>
+
+    <!-- Navbar -->
+    <nav
+      class="navbar navbar-expand-sm navbar-light bg-primary bg-opacity-10 text-black"
+    >
+      <div class="container-fluid px-5">
+        <a class="navbar-brand" href="#"><img src="./assets/img/logo.png" /></a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNavDropdown"
+          aria-controls="navbarNavDropdown"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div
+          class="collapse navbar-collapse justify-content-end"
+          id="navbarNavDropdown"
+        >
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="#">Our Services</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Why Us</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Testimonial</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">FAQ</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="container-fluid bg-primary bg-opacity-10 pt-4">
+      <div class="row align-items-center">
+        <div class="col-lg-6 p-5">
+          <h1 class="pb-3">
+            Sewa & Rental Mobil Terbaik di Kawasan (Lokasimu)
+          </h1>
+          <p>
+            Selamat datang di Binar Car Rental. Kami menyediakan mobil kualitas
+            terbaik dengan harga terjangkau. Selalu siap melayani kebutuhanmu
+            untuk sewa mobil selama 24 jam.
+          </p>
+        </div>
+        <div class="col-lg-6 p-0 m-0 text-end">
+          <img src="./assets/img/img_car.png" class="img-fluid" />
+        </div>
+      </div>
+    </section>
+
+    <!-- Cari Mobil -->
+    <section
+      id="cari-mobil"
+      class="container-fluid"
+      style="position: absolute; top: 440px"
+    >
+      <div class="f-card card shadow-sm">
+        <form class="row align-items-end justify-content-center p-3">
+          <div class="col-lg-auto col-sm-12 py-1">
+            <label for="nama_mobil" class="form-label">Nama Mobil</label>
+            <input
+              placeholder="Ketik nama/tipe mobil"
+              type="text"
+              class="form-control"
+              id="nama_mobil"
+              onclick="on()"
+            />
+          </div>
+          <div class="col-lg-auto col-sm-12 py-1">
+            <label for="kategori" class="form-label">Kategori</label>
+            <select id="kategori" class="form-select" onclick="on()">
+              <option hidden selected>Masukkan Kapasitas Mobil</option>
+              <option class="green" value="2-4">2-4 orang</option>
+              <option value="4-6">4-6 orang</option>
+              <option value="6-8">6-8 orang</option>
+            </select>
+          </div>
+          <div class="col-lg-auto col-sm-12 py-1">
+            <label for="harga_sewa" class="form-label">Harga</label>
+            <select id="harga_sewa" class="form-select" onclick="on()">
+              <option hidden selected>Harga Sewa per Hari</option>
+              <option value="1">< Rp. 400.000</option>
+              <option value="2">Rp. 400.000 - Rp. 600.000</option>
+              <option value="3">> Rp. 600.000</option>
+            </select>
+          </div>
+          <div class="col-lg-auto col-sm-12 py-1">
+            <label for="status" class="form-label">Status</label>
+            <select id="status" class="form-select" onclick="on()">
+              <option hidden selected>Disewakan</option>
+              <option value="1">Disewakan</option>
+            </select>
+          </div>
+          <div class="col-lg-auto col-sm-12 py-1">
+            <button
+              type="submit"
+              class="btn btn-success"
+              onclick="getCarList()"
+            >
+              Cari Mobil
+            </button>
+          </div>
+        </form>
+      </div>
+    </section>
+    <!-- span -->
+    <section class="m-5 p-3"></section>
+    <!-- Footer -->
+    <footer class="pt-5">
+      <div class="row m-5">
+        <div class="col-lg-3 col-sm-12 pt-3">
+          <ul class="p-0 fw-bold list-unstyled">
+            <li class="mb-3">
+              Jalan Suroyo No. 161 Mayangan Kota Probolonggo 672000
+            </li>
+            <li class="mb-3">binarcarrental@gmail.com</li>
+            <li class="mb-3">081-233-334-808</li>
+          </ul>
+        </div>
+        <div class="col-lg-3 col-sm-12 pt-3">
+          <ul class="p-0 list-unstyled">
+            <li class="mb-3"><a href="#">Our Services</a></li>
+            <li class="mb-3"><a href="#">Why Us</a></li>
+            <li class="mb-3"><a href="#">Testimonail</a></li>
+            <li class="mb-3"><a href="#">FAQ</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-3 col-sm12 pt-3">
+          <p>Connect With Us</p>
+          <img src="./assets/img/icon_facebook.png" alt="facebook" />
+          <img src="./assets/img/icon_instagram.png" alt="instagram" />
+          <img src="./assets/img/icon_twitter.png" alt="twitter" />
+          <img src="./assets/img/icon_mail.png" alt="mail" />
+          <img src="./assets/img/icon_twitch.png" alt="twitch" />
+        </div>
+        <div class="col-lg-3 col-sm12 pt-3">
+          <p>Copyright Binar 2022</p>
+          <img src="./assets/img/logo.png" alt="facebook" />
+        </div>
+      </div>
+    </footer>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      function on() {
+        document.getElementById("overlay").style.display = "block";
+      }
+
+      function off() {
+        document.getElementById("overlay").style.display = "none";
+      }
+
+      getCarList = () => {
+        const car_name = document.getElementById("nama_mobil");
+        const capacity = document.getElementById("kategori");
+        const price = document.getElementById("harga_sewa");
+        const status = document.getElementById("status");
+        alert(capacity.value + car_name.value + price.value + status.value);
+        window.location.href = "hasil_pencarian.html";
+      };
+    </script>
+  </body>
+</html>
